@@ -24,7 +24,7 @@ const (
 			case "localhost":
 				addr = "http://localhost:80"
 			default:
-				fmt.Fprintf(os.Stderr, "invalid host argument: %q (valid hosts: localhost", *hostF)
+				fmt.Fprintln(os.Stderr, "invalid host argument: %q (valid hosts: localhost", *hostF)
 			}
 		}
 		timeout = *timeoutF
@@ -38,7 +38,7 @@ const (
 	{
 		u, err := url.Parse(addr)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "invalid URL %#v: %s", addr, err)
+			fmt.Fprintln(os.Stderr, "invalid URL %#v: %s", addr, err)
 			os.Exit(1)
 		}
 		scheme = u.Scheme
@@ -54,7 +54,7 @@ const (
 		case "http", "https":
 			endpoint, payload, err = doHTTP(scheme, host, timeout, debug)
 		default:
-			fmt.Fprintf(os.Stderr, "invalid scheme: %q (valid schemes: grpc|http)", scheme)
+			fmt.Fprintln(os.Stderr, "invalid scheme: %q (valid schemes: grpc|http)", scheme)
 			os.Exit(1)
 		}
 	}
@@ -131,7 +131,7 @@ func indent(s string) string {
 			case "dev":
 				addr = "http://example:8090"
 			default:
-				fmt.Fprintf(os.Stderr, "invalid host argument: %q (valid hosts: dev", *hostF)
+				fmt.Fprintln(os.Stderr, "invalid host argument: %q (valid hosts: dev", *hostF)
 			}
 		}
 		timeout = *timeoutF
@@ -145,7 +145,7 @@ func indent(s string) string {
 	{
 		u, err := url.Parse(addr)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "invalid URL %#v: %s", addr, err)
+			fmt.Fprintln(os.Stderr, "invalid URL %#v: %s", addr, err)
 			os.Exit(1)
 		}
 		scheme = u.Scheme
@@ -161,7 +161,7 @@ func indent(s string) string {
 		case "http", "https":
 			endpoint, payload, err = doHTTP(scheme, host, timeout, debug)
 		default:
-			fmt.Fprintf(os.Stderr, "invalid scheme: %q (valid schemes: http|https)", scheme)
+			fmt.Fprintln(os.Stderr, "invalid scheme: %q (valid schemes: http|https)", scheme)
 			os.Exit(1)
 		}
 	}
@@ -256,7 +256,7 @@ func indent(s string) string {
 				addr = strings.Replace(addr, "{float64}", *float64_F, -1)
 				addr = strings.Replace(addr, "{bool}", *boolF, -1)
 			default:
-				fmt.Fprintf(os.Stderr, "invalid host argument: %q (valid hosts: dev", *hostF)
+				fmt.Fprintln(os.Stderr, "invalid host argument: %q (valid hosts: dev", *hostF)
 			}
 		}
 		timeout = *timeoutF
@@ -270,7 +270,7 @@ func indent(s string) string {
 	{
 		u, err := url.Parse(addr)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "invalid URL %#v: %s", addr, err)
+			fmt.Fprintln(os.Stderr, "invalid URL %#v: %s", addr, err)
 			os.Exit(1)
 		}
 		scheme = u.Scheme
@@ -286,7 +286,7 @@ func indent(s string) string {
 		case "http", "https":
 			endpoint, payload, err = doHTTP(scheme, host, timeout, debug)
 		default:
-			fmt.Fprintf(os.Stderr, "invalid scheme: %q (valid schemes: )", scheme)
+			fmt.Fprintln(os.Stderr, "invalid scheme: %q (valid schemes: )", scheme)
 			os.Exit(1)
 		}
 	}
@@ -374,7 +374,7 @@ func indent(s string) string {
 			case "stage":
 				addr = "https://example"
 			default:
-				fmt.Fprintf(os.Stderr, "invalid host argument: %q (valid hosts: dev|stage", *hostF)
+				fmt.Fprintln(os.Stderr, "invalid host argument: %q (valid hosts: dev|stage", *hostF)
 			}
 		}
 		timeout = *timeoutF
@@ -388,7 +388,7 @@ func indent(s string) string {
 	{
 		u, err := url.Parse(addr)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "invalid URL %#v: %s", addr, err)
+			fmt.Fprintln(os.Stderr, "invalid URL %#v: %s", addr, err)
 			os.Exit(1)
 		}
 		scheme = u.Scheme
@@ -404,7 +404,7 @@ func indent(s string) string {
 		case "http", "https":
 			endpoint, payload, err = doHTTP(scheme, host, timeout, debug)
 		default:
-			fmt.Fprintf(os.Stderr, "invalid scheme: %q (valid schemes: http|https)", scheme)
+			fmt.Fprintln(os.Stderr, "invalid scheme: %q (valid schemes: http|https)", scheme)
 			os.Exit(1)
 		}
 	}
@@ -493,7 +493,7 @@ func indent(s string) string {
 					}
 				}
 				if !versionSeen {
-					fmt.Fprintf(os.Stderr, "invalid value for URL 'version' variable: %q (valid values: v1,v2)", *versionF)
+					fmt.Fprintln(os.Stderr, "invalid value for URL 'version' variable: %q (valid values: v1,v2)", *versionF)
 					os.Exit(1)
 				}
 				addr = strings.Replace(addr, "{version}", *versionF, -1)
@@ -502,7 +502,7 @@ func indent(s string) string {
 				addr = strings.Replace(addr, "{domain}", *domainF, -1)
 				addr = strings.Replace(addr, "{port}", *portF, -1)
 			default:
-				fmt.Fprintf(os.Stderr, "invalid host argument: %q (valid hosts: dev|stage", *hostF)
+				fmt.Fprintln(os.Stderr, "invalid host argument: %q (valid hosts: dev|stage", *hostF)
 			}
 		}
 		timeout = *timeoutF
@@ -516,7 +516,7 @@ func indent(s string) string {
 	{
 		u, err := url.Parse(addr)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "invalid URL %#v: %s", addr, err)
+			fmt.Fprintln(os.Stderr, "invalid URL %#v: %s", addr, err)
 			os.Exit(1)
 		}
 		scheme = u.Scheme
@@ -532,7 +532,7 @@ func indent(s string) string {
 		case "http", "https":
 			endpoint, payload, err = doHTTP(scheme, host, timeout, debug)
 		default:
-			fmt.Fprintf(os.Stderr, "invalid scheme: %q (valid schemes: )", scheme)
+			fmt.Fprintln(os.Stderr, "invalid scheme: %q (valid schemes: )", scheme)
 			os.Exit(1)
 		}
 	}
