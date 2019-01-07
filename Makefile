@@ -17,14 +17,21 @@ DIRS=$(shell go list -f {{.Dir}} goa.design/goa/expr/...)
 DEPEND=\
 	github.com/sergi/go-diff/diffmatchpatch \
 	golang.org/x/lint/golint \
-	golang.org/x/tools/cmd/goimports
+	golang.org/x/tools/cmd/goimports \
+	github.com/golang/protobuf/protoc-gen-go
 
 all: lint gen test
 
 travis: depend all
 
+PROTOC_ZIP = protoc-3.3.0-linux-x86_64.zip
 depend:
+	# Install protoc
+	@curl -s -OL https://github.com/google/protobuf/releases/download/v3.3.0/$(PROTOC_ZIP) && \
+		sudo unzip -o $(PROTOC_ZIP) -d /usr/local bin/protoc && \
+		rm -f $(PROTOC_ZIP)
 	@go get -v $(DEPEND)
+	@go install github.com/golang/protobuf/protoc-gen-go
 	@go get -t -v ./...
 
 lint:
